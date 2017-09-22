@@ -14,11 +14,14 @@ void md5_hash_from_string (char *string, char *hash)
     }
 }
 
-int main()
+int main(int argc, char *argv[] )
 {
-    char string[255] = "Hello World";
-    char md5_hash[2*MD5_DIGEST_LENGTH+1] = "";
-    md5_hash_from_string(string, md5_hash);
-    printf("%s\n", md5_hash);
-    return 0;
+    if (argc == 2) {
+      char md5_hash[2*MD5_DIGEST_LENGTH+1] = "";
+      md5_hash_from_string(argv[1], md5_hash);
+      printf("%s\n", md5_hash);
+      return 0;
+    } else {
+      printf("Bad parameters : Please use %s <sentence>\n", argv[0]); 
+    }
 }
